@@ -9,6 +9,12 @@
 import UIKit
 import Flutter
 
+class FlutterViewController1: FlutterViewController {
+    deinit {
+        print("释放");
+    }
+}
+
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -17,10 +23,18 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        let flutterEngine = (UIApplication.shared.delegate as? AppDelegate)?.flutterEngine;
-        let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)!;
-        self.present(flutterViewController, animated: false, completion: nil)
-
+//        let flutterEngine = (UIApplication.shared.delegate as? AppDelegate)?.flutterEngine;
+//        let flutterViewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)!;
+//        flutterViewController.setInitialRoute("route1")
+//
+        let flutterViewController = FlutterViewController1(nibName: nil, bundle: nil)
+        flutterViewController.setInitialRoute("route1")
+        let methodChannel = FlutterMethodChannel(name: "com.flutterbus/demo", binaryMessenger: flutterViewController)
+//        methodChannel.setMethodCallHandler { (call: FlutterMethodCall, result: FlutterResult) in
+//            print(call)
+//        }
+        
+        self.navigationController?.pushViewController(flutterViewController, animated: true)
     }
 
 
