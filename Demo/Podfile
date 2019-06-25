@@ -1,0 +1,14 @@
+platform :ios, '9.0'
+use_frameworks!
+install! 'cocoapods', :disable_input_output_paths => true
+
+target 'Demo' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for Demo
+
+end
+
+flutter_application_path = '../my_flutter/'
+eval(File.read(File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')), binding)
