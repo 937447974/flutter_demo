@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 void main() => runApp(_widgetForRoute(window.defaultRouteName));
 
 Widget _widgetForRoute(String route) {
+  print(route);
   switch (route) {
     case 'route1':
       return MyApp();
